@@ -1,0 +1,52 @@
+<html>
+<head>
+  <title>Tic-Tac-Toe</title>
+  <style>
+  .wrapper {
+    display: grid;
+    color: white;
+    grid-template-columns: repeat(3, 1fr);
+    background-color: ;
+    grid-auto-rows: minmax(200px, auto);
+    height: 95vh;
+  }
+  div {
+    border: 1px solid white;
+  }
+  div:not(.wrapper):hover {
+    background-color: lightgreen;
+  }
+  div:nth-of-type(odd) {
+    background-color: red;
+  }
+  </style>
+<head>
+<body>
+<h1>Tic-Tac-Toe</h1>
+<div class="wrapper">
+  <div>
+  </div>
+  <div>
+  </div>
+  <div>
+  </div>
+  <div>
+  </div>
+  <div>
+  </div>
+  <div>
+  </div>
+  <div>
+  </div>
+  <div>
+  </div>
+  <div>
+  </div>
+</div>
+</body>
+<script>
+$('.wrapper').click(function (event) {
+  console.log(event.target.id);
+});
+</script>
+</html>
