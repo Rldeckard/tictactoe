@@ -7,7 +7,7 @@
     display: grid;
     color: #333;
     grid-template-columns: repeat(3, 1fr);
-    grid-auto-rows: minmax(200px, auto);
+    grid-auto-rows: minmax(300px, 350px);
     height: 60vh;
   }
   div {
@@ -81,7 +81,6 @@ game.click(function (event) {
   }
   $('.player')[0].innerHTML = value;
   for (var i=0;i<=6;i++) {
-    console.log(tile[i].innerHTML);
     if (tile[i].innerHTML == 'X' || tile[i].innerHTML == 'O') {
       if (i % 3 == 0) {
         if(tile[i].innerHTML == tile[i+1].innerHTML && tile[i+1].innerHTML == tile[i+2].innerHTML) {
