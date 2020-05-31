@@ -8,7 +8,7 @@
     color: #333;
     grid-template-columns: repeat(3, 1fr);
     grid-auto-rows: minmax(200px, auto);
-    height: 95vh;
+    height: 60vh;
   }
   div {
     text-align: center;    
@@ -30,12 +30,18 @@
     padding: 0;
     margin: 0;
   }
+  span, label{
+    font-size: 5em;
+  }
+  .player {
+    color: green;
+  }
   </style>
 <head>
 <body>
 <h1>
-<span>Tic-Tac-Toe</span>
-<label>Player: <span class="player"></span><label>
+<span>Tic-Tac-Toe</span><br>
+<label>Player: </label><span class="player">X</span>
 </h1>
 <div class="wrapper">
   <div>
@@ -62,6 +68,10 @@
 var value = 'X';
 var game = $('.wrapper');
 var tile = game[0].children;
+function winner(i) {
+  alert('WINNER: ' + tile[i].innerHTML);
+  location.reload();
+}
 game.click(function (event) {
   event.target.innerHTML = value;
   if (value == 'X') {
@@ -75,21 +85,21 @@ game.click(function (event) {
     if (tile[i].innerHTML == 'X' || tile[i].innerHTML == 'O') {
       if (i % 3 == 0) {
         if(tile[i].innerHTML == tile[i+1].innerHTML && tile[i+1].innerHTML == tile[i+2].innerHTML) {
-          alert('WINNER: ' + tile[i].innerHTML);
+          winner(i);
         }
       }
       if (i<=2) {
         if(tile[i].innerHTML == tile[i+3].innerHTML && tile[i+3].innerHTML == tile[i+6].innerHTML) {
-          alert('WINNER: ' + tile[i].innerHTML);
+          winner(i);
         } 
       }
     }
   }
     if((tile[0].innerHTML == 'X' || tile[0].innerHTML == 'O') && tile[0].innerHTML == tile[4].innerHTML && tile[4].innerHTML == tile[8].innerHTML) {
-      alert('WINNER: ' + tile[0].innerHTML);
+      winner(0);
     }
     if((tile[2].innerHTML == 'X' || tile[2].innerHTML == 'O') && tile[2].innerHTML == tile[4].innerHTML && tile[4].innerHTML == tile[6].innerHTML) {
-      alert('WINNER: ' + tile[2].innerHTML);
+      winner(2);
     }
 });
 
