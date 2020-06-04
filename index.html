@@ -11,7 +11,7 @@
     height: 60vh;
   }
   div {
-    text-align: center;    
+    text-align: center;
     border: 1px solid white;
     transition: background-color 1s;
     padding: 0;
@@ -68,6 +68,10 @@
 var value = 'X';
 var game = $('.wrapper');
 var tile = game[0].children;
+var playerX = new Array();
+var winningMovesIndex = new Array();
+winningMovesIndex[0] = [1, 2, 3];
+winningMovesIndex[1] = [4, 5, 6];
 function winner(i) {
   alert('WINNER: ' + tile[i].innerHTML);
   location.reload();
@@ -80,9 +84,17 @@ game.click(function (event) {
     value = 'X';
   }
   $('.player')[0].innerHTML = value;
+  for (spot of game[0].children) {
+    if (spot.innerHTML == 'X') {
+      playerX.push(spot.innerHTML);
+    } else {
+      playerO.push(spot.innerHTML);
+    }
+  }
+  console.log(playerX);
   for (var i=0;i<=6;i++) {
     if (tile[i].innerHTML == 'X' || tile[i].innerHTML == 'O') {
-      if (i % 3 == 0) {
+      if (i % 3 == 0 && i !== '0') {
         if(tile[i].innerHTML == tile[i+1].innerHTML && tile[i+1].innerHTML == tile[i+2].innerHTML) {
           winner(i);
         }
@@ -90,7 +102,7 @@ game.click(function (event) {
       if (i<=2) {
         if(tile[i].innerHTML == tile[i+3].innerHTML && tile[i+3].innerHTML == tile[i+6].innerHTML) {
           winner(i);
-        } 
+        }
       }
     }
   }
