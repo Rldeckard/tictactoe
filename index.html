@@ -68,48 +68,38 @@
 var value = 'X';
 var game = $('.wrapper');
 var tile = game[0].children;
-var playerX = new Array();
-var winningMovesIndex = new Array();
-winningMovesIndex[0] = [1, 2, 3];
-winningMovesIndex[1] = [4, 5, 6];
 function winner(i) {
-  alert('WINNER: ' + tile[i].innerHTML);
+  alert('WINNER: ' + tile[i].textContent);
   location.reload();
 }
 game.click(function (event) {
-  event.target.innerHTML = value;
+  event.target.textContent = value;
   if (value == 'X') {
     value = 'O';
   } else {
     value = 'X';
   }
-  $('.player')[0].innerHTML = value;
-  for (spot of game[0].children) {
-    if (spot.innerHTML == 'X') {
-      playerX.push(spot.innerHTML);
-    } else {
-      playerO.push(spot.innerHTML);
-    }
-  }
-  console.log(playerO);
+  $('.player')[0].textContent = value;
+
   for (var i=0;i<=6;i++) {
-    if (tile[i].innerHTML == 'X' || tile[i].innerHTML == 'O') {
-      if (i % 3 == 0 && i !== '0') {
-        if(tile[i].innerHTML == tile[i+1].innerHTML && tile[i+1].innerHTML == tile[i+2].innerHTML) {
+      console.log(tile[i].textContent);
+    if (tile[i].textContent == 'X' || tile[i].textContent == 'O') {
+      if (i % 3 == 0) {
+        if(tile[i].textContent == tile[i+1].textContent && tile[i+1].textContent == tile[i+2].textContent) {
           winner(i);
         }
       }
       if (i<=2) {
-        if(tile[i].innerHTML == tile[i+3].innerHTML && tile[i+3].innerHTML == tile[i+6].innerHTML) {
+        if(tile[i].textContent == tile[i+3].textContent && tile[i+3].textContent == tile[i+6].textContent) {
           winner(i);
         }
       }
     }
   }
-    if((tile[0].innerHTML == 'X' || tile[0].innerHTML == 'O') && tile[0].innerHTML == tile[4].innerHTML && tile[4].innerHTML == tile[8].innerHTML) {
+    if((tile[0].textContent == 'X' || tile[0].textContent == 'O') && tile[0].textContent == tile[4].textContent && tile[4].textContent == tile[8].textContent) {
       winner(0);
     }
-    if((tile[2].innerHTML == 'X' || tile[2].innerHTML == 'O') && tile[2].innerHTML == tile[4].innerHTML && tile[4].innerHTML == tile[6].innerHTML) {
+    if((tile[2].textContent == 'X' || tile[2].textContent == 'O') && tile[2].textContent == tile[4].textContent && tile[4].textContent == tile[6].textContent) {
       winner(2);
     }
 });
